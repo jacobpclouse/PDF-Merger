@@ -4,13 +4,8 @@
 # Importing Libraries / Modules 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 import os # used to create folder and traverse directory paths and the files within
-# import PyPDF2 # used to merge PDFs
-from PyPDF2 import PdfReader, PdfMerger
-
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Variables
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
+from PyPDF2 import PdfReader, PdfMerger # used to merge PDFs
+# Read more about the functionality of PyPDF2 at: https://pypi.org/project/PyPDF2/
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Functions
@@ -34,7 +29,7 @@ def generalMerge():
     outputPDFName = input("What do you want the output to be named?: ")
     print("\n")
 
-    # opening up folder and looping through images
+    # opening up folder and looping through pdfs
     merger = PdfMerger()    
     for filename in os.listdir(pathToFolder):
         print(f"Selected Filename: {filename}")
@@ -48,7 +43,10 @@ def generalMerge():
     print("\n\n")
     myLogo()
 
+
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # MAIN 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 generalMerge()
