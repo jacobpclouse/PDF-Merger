@@ -84,14 +84,17 @@ print(chooseMerge.upper())
 print('\n')
 
 # Catch statement to prevent invalid selections
-# while (chooseMerge != 'GENERAL') or (chooseMerge != 'SELECTIVE'):
-#     print(chooseMerge)
-#     input("Please input either GENERAL or SELECTIVE: ")
+while chooseMerge == '':
+    chooseMerge = input("Can't be left blank, please input either GENERAL or SELECTIVE: ")
 
 # execute general merge
 if chooseMerge.upper() == 'GENERAL':
     generalMerge()
 
 # execute selective merge
-if chooseMerge.upper() == 'SELECTIVE':
+elif chooseMerge.upper() == 'SELECTIVE':
     selectiveMerge()
+
+# if nonsense, end the script
+else:
+    print("Response Not Recognized, Ending Program...")
