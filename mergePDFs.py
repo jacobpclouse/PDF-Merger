@@ -62,8 +62,18 @@ def selectiveMerge():
     while starterVal <= numberOfFilesToMerge:
         print(f"Starter Value: {starterVal} of Total Files: {numberOfFilesToMerge}")
         filename = input(f"What is the file you want to add in the {starterVal} spot?: ")
-        filepath = os.path.join(pathToFolder, filename)
+        print('\n')
+
+        # Below allows for files in different directories to be addeded to the output
+        isSamePath = input(f"Is the path to this file: {pathToFolder}? ")
+        if isSamePath.upper() == 'YES':
+            print("Same path")
+            filepath = os.path.join(pathToFolder, filename)
+        else:
+            sepPath = input("What is the path to this file?: ")
+            filepath = os.path.join(sepPath, filename)
         print(filepath)
+        
         merger.append(filepath)
         print("\n")
         starterVal += 1
