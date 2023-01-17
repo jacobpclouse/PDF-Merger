@@ -25,6 +25,7 @@ def myLogo():
 # --- Function to Merge Full PDFs in any order ---
 def generalMerge():
     print("General Merge")
+    print("All files in a folder will be combine in numbers/alphabetical order")
     pathToFolder = input("Please specifiy the path to the folder containing the PDFs that you would like to merge: ")
     outputPDFName = input("What do you want the output to be named?: ")
     print("\n")
@@ -44,9 +45,53 @@ def generalMerge():
     myLogo()
 
 
+# --- Function to Merge Full PDFs in a specified order dictated by the user ---
+def selectiveMerge():
+    print("Selective Merge")
+    print("User will determine how many documents they want to merge manually")
+    # pdfsToMergeArray = []
+    pathToFolder = input("Please specifiy the path to the folder containing the PDFs that you would like to merge: ")
+    outputPDFName = input("What do you want the output to be named?: ")
+    numberOfFilesToMerge = int(input("How many items do you want to merge?: "))
+
+    print("\n")
+
+    # Querying User for Order
+    merger = PdfMerger() 
+    starterVal = 1
+    while starterVal <= numberOfFilesToMerge:
+        print(f"Starter Value: {starterVal} of Total Files: {numberOfFilesToMerge}")
+        filename = input(f"What is the file you want to add in the {starterVal} spot?: ")
+        filepath = os.path.join(pathToFolder, filename)
+        print(filepath)
+        merger.append(filepath)
+        print("\n")
+        starterVal += 1
+
+
+    # opening up folder and looping through pdfs
+    merger.write(f"{outputPDFName}.pdf")
+    merger.close()
+    print("\n\n")
+    myLogo()  
+
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # MAIN 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+chooseMerge = input("What kind of merge do you want: GENERAL or SELECTIVE? ")
+print(chooseMerge.upper())
+print('\n')
 
-generalMerge()
+# Catch statement to prevent invalid selections
+# while (chooseMerge != 'GENERAL') or (chooseMerge != 'SELECTIVE'):
+#     print(chooseMerge)
+#     input("Please input either GENERAL or SELECTIVE: ")
+
+# execute general merge
+if chooseMerge.upper() == 'GENERAL':
+    generalMerge()
+
+# execute selective merge
+if chooseMerge.upper() == 'SELECTIVE':
+    selectiveMerge()
