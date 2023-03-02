@@ -65,7 +65,7 @@ def selectiveMerge():
         print('\n')
 
         # Below allows for files in different directories to be addeded to the output
-        isSamePath = input(f"Is the path to this file: {pathToFolder}? ")
+        isSamePath = input(f"Is the path to this file: {pathToFolder}? (YES or NO) ")
         if isSamePath.upper() == 'YES':
             print("Same path")
             filepath = os.path.join(pathToFolder, filename)
