@@ -22,21 +22,19 @@ def myLogo():
     print("Dedicated to Peter Zlomek and Harely Alderson III")
 
 
-
 # --- Function to Merge Full PDFs in any order ---
 def generalMerge():
     print("General Merge")
-    print("All files in a folder will be combined in numbers/alphabetical order")
-    pathToFolder = input("Please specify the path to the folder containing the PDFs that you would like to merge: ")
+    print("All files in a folder will be combine in numbers/alphabetical order")
+    pathToFolder = input("Please specifiy the path to the folder containing the PDFs that you would like to merge: ")
     outputPDFName = input("What do you want the output to be named?: ")
     print("\n")
 
     # opening up folder and looping through pdfs
-    files = os.listdir(pathToFolder)
-    files.sort(key=lambda x: (x[0].isdigit(), x))
-    merger = PdfMerger()
-    for filename in files:
+    merger = PdfMerger()    
+    for filename in os.listdir(pathToFolder):
         print(f"Selected Filename: {filename}")
+        # merger.append(f"{pathToFolder}/{filename}") # this may need to be changed in case of windows vs linux
         filepath = os.path.join(pathToFolder, filename)
         print(f"FilePath: {filepath}")
         merger.append(filepath)
@@ -45,7 +43,6 @@ def generalMerge():
     merger.close()
     print("\n\n")
     myLogo()
-
 
 
 # --- Function to Merge Full PDFs in a specified order dictated by the user ---
